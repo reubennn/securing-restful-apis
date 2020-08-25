@@ -1,0 +1,21 @@
+* // ---------- Top Five Security Threats ---------- // *
+
+# 1. Injection Attacks
+- Untrusted data sent to an interpreter as part of command or query
+
+# 2. Broken Authentication
+- Implementation of authentication is broken
+- Opportunity for attackers to get passwords or tokens
+
+# 3. Sensitive Data Exposure
+- APIs don't properly protect sensitive information
+- Easily provides opportunities for identity theft or identification leaks
+
+# 4. XML Entities
+- Older or poorly written XML processors can be exploited with XML injected hostile content
+
+# 5. Broken Access Control
+- Restrictions on what users can access if poorly implemented
+- Allows other users to see sensitive data
+
+For a full list of the top security threats, see [OWASP](https://owasp.org/www-project-top-ten/)

@@ -1,0 +1,12 @@
+* // ---------- JWT ---------- // *
+https://jwt.io/
+
+Data is encrypted with JWT for transport:
+
+# User Requesting
+- Data Encryption
+- Initial request before encryption
+
+# => Server
+- Data decryption
+- Request to server after decryption
