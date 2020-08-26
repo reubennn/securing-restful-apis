@@ -10,7 +10,7 @@ export const loginRequired = (req, res, next) => {
     if (req.user) { // If we have a logged in user
         next(); // GET, POST, DELETE etc.
     } else {
-        return res.status(401).json({ message: "Unauthorised user!" };)
+        return res.status(401).json({ message: "Unauthorised user!" });
     }
 };
 
@@ -31,3 +31,21 @@ export const register = (req, res) => {
         }
     });
 };
+
+export const login = (req, res) => {
+    User.findOne({
+        email: req.body.email
+    }, (err, user) => {
+        if (err) throw err;
+        if (!user) { // If not user is found
+            res.status(401).json({ message: "Authentication failed. No user found." });
+        } else if (user) { // If the user is found
+            if (!user.comparePassword(req.body.password, user.hashPassword)) { // If the passwords do not match
+                res.status(401).json({ message: "Authentication failed. Password is incorrect." });
+            } else { // The user is authenticated
+                // Send as a response the signed token
+                return res.json({ token: jwt.sign({ email: user.email, username: user.username, _id: user.id }, "RESTFULAPIs") }) // Secret word to sign the web token
+            }
+        }
+    })
+}
