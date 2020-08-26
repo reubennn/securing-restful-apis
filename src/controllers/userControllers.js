@@ -18,7 +18,7 @@ export const loginRequired = (req, res, next) => {
 export const register = (req, res) => {
     const newUser = new User(req.body);
     // Encrypt the password before passing it to the database
-    newUser.hashPassword = bcrypt.hasSync(req.body.password, 10); // 10 = hashSync algorithm
+    newUser.hashPassword = bcrypt.hashSync(req.body.password, 10); // 10 = hashSync algorithm
     // Now save the user to the database
     newUser.save((err, user) => {
         if (err) {
